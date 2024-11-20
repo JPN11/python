@@ -116,6 +116,16 @@ class Game:
         # Remove players with no money
         self.remove_broke_players()
 
+        # Check if there are players left
+        if len(self.players) == 0:
+            print("No players left. Game over.")
+            self.gameover = True
+            return  # Skip the play again prompt
+
+        if len(self.players) == 1:
+            self.gameover = True
+
+    
         # Ask if players want to play again
         play_again = input("Do you want to play again? [y/n] ")
         if play_again.lower() == "y":
