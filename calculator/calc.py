@@ -30,6 +30,9 @@ def area(shape):
             height = float(input("Enter the height of the triangle: "))
             return 0.5 * base * height
         elif type.lower == "isosceles":
+            base = float(input("Enter the base of the triangle: "))
+            height = float(input("Enter the height of the triangle: "))
+            
             
     elif shape == "square":
 

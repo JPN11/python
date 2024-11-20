@@ -24,7 +24,6 @@ class Player:
         self.bet = 0
         self.money = 1000  # Each player starts with $1000
 
-
     def deal_card(self):
         draw = random.choice(cards)
         self.hand.append(draw)
@@ -80,6 +79,15 @@ class Game:
         self.players = []
         self.gameover = False
 
+    def remove_broke_players(self):
+        # Create a list of players to remove
+        players_to_remove = [player for player in self.players if player.money <= 0]
+        
+        # Remove each player from the game
+        for player in players_to_remove:
+            print(f"{player.name} is out of money and has been removed from the game.")
+            self.players.remove(player)
+
     def dealer_turn(self, dealer):
         dealer_value = dealer.calculate_hand_value()
         print(f"Dealer's hand value is {dealer_value}")
@@ -89,8 +97,6 @@ class Game:
             if player_value > 21:
                 print(f"{player.name} busts! Dealer wins.")
                 print(f"{player.name} now has ${player.money}")
-                if player.money >= 0:
-                    self.gameover = True
             elif dealer_value > 21:
                 print(f"Dealer busts! {player.name} wins.")
                 player.money += player.bet * 2
@@ -102,12 +108,13 @@ class Game:
             elif player_value < dealer_value:
                 print("Dealer wins!")
                 print(f"{player.name} now has ${player.money}")
-                if player.money >= 0:
-                    self.gameover = True
             else:
                 print("It's a tie!")
                 player.money += player.bet  # Player gets their bet back
                 print(f"{player.name} now has ${player.money}")
+
+        # Remove players with no money
+        self.remove_broke_players()
 
         # Ask if players want to play again
         play_again = input("Do you want to play again? [y/n] ")
@@ -117,6 +124,7 @@ class Game:
                 player.bet = 0
         else:
             self.gameover = True
+
 
     def main(self):
         print(r""".------..------..------..------..------..------..------..------..------.
