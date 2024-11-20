@@ -24,6 +24,7 @@ class Player:
         self.bet = 0
         self.money = 1000  # Each player starts with $1000
 
+
     def deal_card(self):
         draw = random.choice(cards)
         self.hand.append(draw)
@@ -88,6 +89,8 @@ class Game:
             if player_value > 21:
                 print(f"{player.name} busts! Dealer wins.")
                 print(f"{player.name} now has ${player.money}")
+                if player.money >= 0:
+                    self.gameover = True
             elif dealer_value > 21:
                 print(f"Dealer busts! {player.name} wins.")
                 player.money += player.bet * 2
@@ -99,6 +102,8 @@ class Game:
             elif player_value < dealer_value:
                 print("Dealer wins!")
                 print(f"{player.name} now has ${player.money}")
+                if player.money >= 0:
+                    self.gameover = True
             else:
                 print("It's a tie!")
                 player.money += player.bet  # Player gets their bet back
