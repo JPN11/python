@@ -28,7 +28,10 @@ class Player:
         draw = random.choice(cards)
         self.hand.append(draw)
         if draw["name"] == "Ace":
-            ace_value = int(input(f"{self.name}, you were dealt an Ace. Do you want to count Ace as 11 or 1? [11/1] ")
+            ace_value = int(
+                input(
+                    f"{self.name}, you were dealt an Ace. Do you want to count Ace as 11 or 1? [11/1] "
+                )
             )
             while ace_value not in [11, 1]:
                 ace_value = int(
@@ -111,7 +114,7 @@ class Game:
             self.gameover = True
 
     def main(self):
-        print(""".------..------..------..------..------..------..------..------..------.
+        print(r""".------..------..------..------..------..------..------..------..------.
 |B.--. ||L.--. ||A.--. ||C.--. ||K.--. ||J.--. ||A.--. ||C.--. ||K.--. |
 | :(): || :/\: || (\/) || :/\: || :/\: || :(): || (\/) || :/\: || :/\: |
 | ()() || (__) || :\/: || :\/: || :\/: || ()() || :\/: || :\/: || :\/: |
