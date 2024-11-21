@@ -32,9 +32,15 @@ def area(shape):
         elif type.lower == "isosceles":
             base = float(input("Enter the base of the triangle: "))
             height = float(input("Enter the height of the triangle: "))
-            
-            
+            return height * base / 2
+        elif type.lower() == "equilateral":
+            side = float(input("Enter the length of the side of the triangle: "))
+            return (side ** 2) * math.sqrt(3) / 4
+        else:
+            return "Error: Invalid triangle"
     elif shape == "square":
+        side = float(input("Enter the length of the side of the square: "))
+        return side ** 2
 
 
 def show_menu():
