@@ -48,8 +48,15 @@ def show_menu():
         {"choice": "1", "function": "add"},
         {"choice": "2", "function": "sub"},
         {"choice": "3", "function": "multiply"},
-        {"choice": "4", "function": "divide"}
+        {"choice": "4", "function": "divide"},
+        {"choice": "5", "function": "area"},
 
     ]
     choice = input("Enter your choice: ")
+    for choice in choices:
+        if choice["choice"] == choice:
+            if choice["function"] == "area":
+                shape = input("Enter the shape: ")
+                area(shape)
+            
     
